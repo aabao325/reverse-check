@@ -16,7 +16,7 @@ out/
 .env
 .env.local
 .env.*.local
-
+.cursorignore
 # IDE and editor files
 .idea/
 .vscode/

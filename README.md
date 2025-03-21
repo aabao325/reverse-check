@@ -105,6 +105,10 @@ npm run build
 1. 实现自动化逆向检测
 2. 实现与Uptime Kuma的集成以进行持续监控
 
+## change log
+1. 当API响应返回错误时（如520错误），也能在页面上显示完整的响应体，而不是弹窗提示。
+
+
 ## API文档参考
 
 - [OpenAI API文档](https://platform.openai.com/docs/api-reference/chat)

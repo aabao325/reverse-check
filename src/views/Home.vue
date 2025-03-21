@@ -424,26 +424,30 @@ const handleCheck = async () => {
     })
 
     if (!response.ok) {
-      const errorData = await response.json()
-      const error = new Error(errorData.error?.message || '请求失败')
-      error.response = response.clone() // 保存响应对象以便后续处理
-      error.statusCode = response.status
-      error.statusText = response.statusText
-      throw error
+      // 克隆响应以便可以多次读取
+      const clonedResponse = response.clone();
+      try {
+        const errorData = await clonedResponse.json();
+        result.value = errorData;
+        return;
+      } catch (jsonError) {
+        result.value = { 
+          error: { 
+            message: `请求失败 (${response.status} ${response.statusText})` 
+          } 
+        };
+        return;
+      }
     }
 
-    result.value = await response.json()
+    result.value = await response.json();
   } catch (error) {
-    // 捕获错误响应并显示在结果区域，而不是弹窗
-    if (error.response) {
-      try {
-        result.value = await error.response.json();
-      } catch {
-        result.value = { error: { message: error.message } };
-      }
-    } else {
-      result.value = { error: { message: error.message } };
-    }
+    // 处理网络错误或其他非HTTP错误
+    result.value = { 
+      error: { 
+        message: error.message || '请求失败'
+      } 
+    };
   } finally {
     loading.value = false
   }
