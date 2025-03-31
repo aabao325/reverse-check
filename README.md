@@ -1,4 +1,5 @@
 # 🔍 reverse-check：LLM API 逆向检测工具
+**当前版本：v0.02**
 
 [English Version](./README_EN.md) | 中文版
 
@@ -106,8 +107,14 @@ npm run build
 2. 实现与Uptime Kuma的集成以进行持续监控
 
 ## change log
-1. 当API响应返回错误时（如520错误），也能在页面上显示完整的响应体，而不是弹窗提示。
+### v0.0.2
+1. 增加了推理模型专用检测参数
+   - OpenAI: reasoning_max_tokens参数检测
+   - Claude: reasoning_stop参数检测
+2. 当API响应返回错误时（如520错误），也能在页面上显示完整的响应体，而不是弹窗提示。
 
+## 推理模型说明
+OpenAI的 API 不会返回reasoning_content字段
 
 ## API文档参考
 

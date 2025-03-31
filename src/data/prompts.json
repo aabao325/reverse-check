@@ -23,6 +23,12 @@
         "max_tokens": 10
       }
     },
+    "reasoning_max_tokens": {
+      "content": "输出 'deepseek number 1' 5次",
+      "params": {
+        "max_tokens": 10
+      }
+    },
     "logprobs": {
       "content": "Hello!",
       "params": {
@@ -112,6 +118,12 @@
       "content": "输出 'deepseek number 1' 5次",
       "params": {
         "max_tokens": 10
+      }
+    },
+    "reasoning_stop": {
+      "content": "Count from 1 to 10 with Arabic numerals",
+      "params": {
+        "stop": ["3"]
       }
     },
     "stop": {

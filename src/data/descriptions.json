@@ -2,11 +2,21 @@
     "openai": {
         "max_tokens": {
             "title": "max_tokens 参数检测说明",
-            "description": "此检测通过设置较小的 max_tokens 值（10）来观察模型的输出限制处理。官方API会严格遵守token限制，而逆向实现可能会忽略此限制。",
+            "description": "此检测通过设置较小的 max_tokens 值（10）来观察模型的输出限制处理。官方API会严格遵守token限制，而逆向会忽略此限制。",
             "focus_points": [
                 "官方API：输出将严格限制在10个token以内",
                 "逆向API：会遵循prompt输出完整的重复内容，超过token限制",
                 "当前prompt：'输出 'deepseek number 1' 5次'",
+                "检测参数设置：max_tokens=10"
+            ]
+        },
+        "reasoning_max_tokens": {
+            "title": "推理模型专用 max_tokens 参数检测说明",
+            "description": "此检测针对推理模型（如o1等），通过设置较小的max_tokens值（10）观察模型输出限制。官方API会严格遵守token限制，而逆向会完整输出响应内容。",
+            "focus_points": [
+                "官方API：message.content内容为空或极短",
+                "逆向API：message.content会生成完整内容",
+                "当前prompt：输出 'deepseek number 1' 5次",
                 "检测参数设置：max_tokens=10"
             ]
         },
@@ -80,6 +90,16 @@
                 "逆向API：会遵循prompt输出完整的重复内容，超过token限制",
                 "当前prompt：'输出 'deepseek number 1' 5次'",
                 "检测参数设置：max_tokens=10"
+            ]
+        },
+        "reasoning_stop": {
+            "title": "推理模型专用 stop 参数检测说明",
+            "description": "此检测针对Claude推理模型，通过设置stop参数为['3']观察模型的推理过程如何展示。官方API会在消息内容中正确停止生成，推理内容不受影响。",
+            "focus_points": [
+                "官方API：message.content内容不含有字符'3'",
+                "逆向API：message.content内容包含完整数字序列，包括'3'",
+                "当前prompt：'Count from 1 to 10 with Arabic numerals'",
+                "检测参数设置：stop=['3']"
             ]
         },
         "stop": {

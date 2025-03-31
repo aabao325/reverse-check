@@ -7,6 +7,7 @@
             <h1 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">
               {{ t('message.title') }}
             </h1>
+            <div class="text-center text-gray-500 text-sm mt-1">v0.02</div>
           </div>
         </div>
       </div>
@@ -296,6 +297,7 @@ const currentDescription = computed(() => {
 const providerParams = {
   openai: [
     { value: 'max_tokens', label: 'max_tokens参数' },
+    { value: 'reasoning_max_tokens', label: '推理模型专用max_tokens' },
     { value: 'logprobs', label: 'logprobs参数' },
     { value: 'n', label: 'n参数' },
     { value: 'stop', label: 'stop参数' },
@@ -306,11 +308,13 @@ const providerParams = {
   ],
   claude: [
     { value: 'max_tokens', label: 'max_tokens参数' },
+    { value: 'reasoning_stop', label: '推理模型专用stop' },
     { value: 'stop', label: 'stop_sequence参数' },
     { value: 'function_call', label: 'tools参数' }
   ],
   gemini: [
     { value: 'max_tokens', label: 'max_tokens参数' },
+    { value: 'reasoning_max_tokens', label: '推理模型专用max_tokens' },
     { value: 'codeExecution', label: 'codeExecution工具' },
     { value: 'googleSearch', label: 'googleSearch工具' },
     { value: 'response_format', label: 'response_format参数' }

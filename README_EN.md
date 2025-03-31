@@ -1,4 +1,5 @@
 # 🔍 LLM API Reverse Engineering Detection Tool
+**Current Version: v0.02**
 
 [中文版](./README.md) | English Version
 
@@ -105,6 +106,14 @@ npm run build
 
 1. Implement automated reverse engineering detection
 2. Implement integration with Uptime Kuma for continuous monitoring
+
+## Changelog
+### v0.02
+1. Added reasoning model specific detection parameters
+   - OpenAI: reasoning_max_tokens parameter testing
+   - Claude: reasoning_stop parameter testing
+   - Gemini: reasoning_max_tokens parameter testing
+2. Fixed error handling to display complete response body on API errors (e.g., 520 errors) instead of showing popup alerts.
 
 ## API Documentation References
 
